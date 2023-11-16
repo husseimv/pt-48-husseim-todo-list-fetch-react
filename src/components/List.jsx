@@ -4,8 +4,23 @@ import './List.css';
 let nextId = 0;
 
 const List = () => {
+
   const [name, setName] = useState('');
   const [tasks, setTasks] = useState([]);
+
+  const [logged, setLogged] = useState(false);
+
+  const [userInput,setUserInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
+  const [credentials, setCredentials] = useState({userInput: '', passwordInput: ''});
+
+  useEffect(()=>{
+      setCredentials({userInput, passwordInput});
+  }, [userInput,passwordInput])
+
+  const Click = () => {
+      console.log(credentials);
+  }
 
   const obtenerInfoServer = async () => {
     const response = await fetch('https://playground.4geeks.com/apis/fake/todos/user/prueba', {
@@ -18,9 +33,7 @@ const List = () => {
   };
 
   const update = async (lista) => {
-    //const newTodo = { label: name, id: '', done: false };
-    //const state = [...tasks, newTodo];
-    //setTasks([...tasks, taskList]);
+
     console.log(tasks,'Tareas');
     await fetch('https://playground.4geeks.com/apis/fake/todos/user/prueba', {
       method: 'PUT',
@@ -59,13 +72,36 @@ const List = () => {
 
   return (
     <>
+      {!logged && (
+        <div className="sign__container">
+            
+        <input type="text" placeholder="User" 
+            onChange={(e) => setUserInput(e.target.value)}
+            value={userInput}   
+        />
+   
+        <input type="password" placeholder="Password" 
+            onChange={(e) => setPasswordInput(e.target.value)}
+            value={passwordInput}  
+        />
+
+        <button className="sign__button"  onClick={() => {
+              Click();
+              setLogged(!logged);}}>Sign in</button>
+       
+    </div>
+      )}
+
+      {logged && (
       <div className="todo__container">
         <div className="todo__title">
           <h1>To-Do List</h1>
         </div>
         <div className="todo__body">
-          <input value={name} onChange={e => setName(e.target.value)} />
-          <button className="todo__button" onClick={addTask}>Add Task</button>
+          <div className="todo__dos">
+            <input className="todo__input" value={name} onChange={e => setName(e.target.value)} />
+            <button className="todo__button" onClick={addTask}>Add Task</button>
+          </div>
           <ul className="todo__ul">
             {tasks.map(task => (
               <li key={task.id}>
@@ -75,7 +111,8 @@ const List = () => {
             ))}
           </ul>
         </div>
-      </div>
+      </div>)}
+
     </>
   );
 };
