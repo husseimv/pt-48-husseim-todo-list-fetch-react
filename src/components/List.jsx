@@ -14,7 +14,7 @@ const List = () => {
 
     const newTask = { id: nextId++, label: name }; 
     await update([...tasks, newTask]);
-    setTasks(prevTasks => [...prevTasks, newTask]);
+    
     console.log(tasks);
     setName('');
   };
