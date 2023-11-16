@@ -1,0 +1,64 @@
+body{
+    background-color: rgb(26, 26, 73);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.todo__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(70, 44, 97);
+    height: 400px;
+    width: 500px;
+    border-radius: 20px;
+    font-family: "Lucida Console", Monaco, monospace;
+    box-shadow: 0 0 10px 5px;
+}
+
+.todo__button {
+    color: #030303;
+    border: 2px solid rgb(122, 22, 84);
+    border-radius: 0px;
+    padding: 3px;
+    margin-left: 10px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #D80286;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
+.todo__button:hover {
+    box-shadow: inset 0 0 0 50px #D80286;
+}
+
+.todo__ul{
+    list-style-type: decimal;
+}
+
+.todo__delete{
+    color: #030303;
+    border: 2px solid rgb(5, 5, 5);
+    border-radius: 0px;
+    padding: 3px;
+    margin-left: 10px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #D80286;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
